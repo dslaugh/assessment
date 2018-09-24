@@ -1,4 +1,4 @@
-#Fuzzy Search Test
+# Fuzzy Search Test
 
 This is a simple implementation of a fuzzy search using React.
 I did this for fun and to improve my skills and knowledge as a software developer. 
