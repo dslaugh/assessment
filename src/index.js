@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FuzzySearch from './components/FuzzySearch';
-import processTransactions from './helpers/normalizeTransactions';
+import normalizeTransactions from './helpers/normalizeTransactions';
 import './css/index.css';
 
 const raw_data = [
@@ -17,8 +17,7 @@ const raw_data = [
 	{ amount: 1111.11, date: '15-01-2018T21:34', card_last_four: '9912' }
 ];
 
-const transactions = processTransactions(raw_data);
-console.log(transactions);
+const transactions = normalizeTransactions(raw_data);
 
 ReactDOM.render(
 	<FuzzySearch transactions={ transactions } />,

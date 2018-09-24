@@ -2,7 +2,7 @@ import React from "react";
 import renderer from 'react-test-renderer';
 import FuzzySearch from './FuzzySearch';
 
-const processed_transactions = [
+const normalized_transactions = [
 	{ amount: 1345.98, date: '22-06-2017T10:33', card_last_four: '0059', formatted_date: '2017-06-22T10:33', formatted_amount: '1345.98' },
 	{ amount: 7774.32, date: '17-07-2017T03:34', card_last_four: '6051', formatted_date: '2017-07-17T03:34', formatted_amount: '7774.32' },
 	{ amount: 95.99, date: '23-11-2017T14:34', card_last_four: '3011', formatted_date: '2017-11-23T14:34', formatted_amount: '95.99' },
@@ -16,7 +16,7 @@ const processed_transactions = [
 ];
 
 const props = {
-	transactions: processed_transactions,
+	transactions: normalized_transactions,
 };
 
 describe('Assessment', () => {
@@ -27,7 +27,7 @@ describe('Assessment', () => {
 
 	it('should render correctly', () => {
 		const component = renderer.create(
-			<FuzzySearch transactions={ processed_transactions } />
+			<FuzzySearch transactions={ normalized_transactions } />
 		);
 		let tree = component.toJSON();
 
@@ -87,7 +87,7 @@ describe('Assessment', () => {
 
 	describe('#filterTransactions', () => {
 		it('should return all transactions if the search value is blank', () => {
-			const expected_transactions = processed_transactions;
+			const expected_transactions = normalized_transactions;
 			const search_value = '';
 
 			const filtered_transactions = assessment.filterTransactions(props.transactions, search_value);

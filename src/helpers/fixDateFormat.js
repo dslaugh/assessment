@@ -1,4 +1,4 @@
-export default function (dateString) {
+export default function fixDateFormat(dateString) {
 	const dateParts = dateString.split('T');
 	const [hours, minutes] = dateParts[1].split(':').map(part => part.padStart(2, '0'));
 	const [day, month, year] = dateParts[0].split('-');
