@@ -1,6 +1,15 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export default class Transactions extends React.Component {
+	static propTypes = {
+		transactions: PropTypes.arrayOf(PropTypes.shape({
+			formatted_amount: PropTypes.string.isRequired,
+			formatted_date: PropTypes.string.isRequired,
+			card_last_four: PropTypes.string.isRequired
+		}))
+	};
+
 	createRow(transaction) {
 		return (
 			<tr key={ transaction.date + transaction.card_last_four }>

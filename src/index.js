@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FuzzySearch from './components/FuzzySearch';
-import processTransactions from './helpers/processTransactions';
+import processTransactions from './helpers/normalizeTransactions';
 import './css/index.css';
 
 const raw_data = [
@@ -18,6 +18,7 @@ const raw_data = [
 ];
 
 const transactions = processTransactions(raw_data);
+console.log(transactions);
 
 ReactDOM.render(
 	<FuzzySearch transactions={ transactions } />,

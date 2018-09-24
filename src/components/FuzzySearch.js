@@ -1,8 +1,17 @@
 import React from "react";
 import SearchInput from './SearchInput';
 import Transactions from './Transactions';
+import PropTypes from 'prop-types';
 
 export default class FuzzySearch extends React.Component {
+	static propTypes = {
+		transactions: PropTypes.arrayOf(PropTypes.shape({
+			formatted_amount: PropTypes.string.isRequired,
+			formatted_date: PropTypes.string.isRequired,
+			card_last_four: PropTypes.string.isRequired,
+		}))
+	};
+
 	constructor(props) {
 		super(props);
 

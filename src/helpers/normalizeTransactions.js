@@ -1,6 +1,6 @@
 import fixDateFormat from "./fixDateFormat";
 
-export default function processTransactions(unprocessed_transactions) {
+export default function normalizeTransactions(unprocessed_transactions) {
 	return unprocessed_transactions
 		.map(transaction => ({
 			amount: transaction.amount,

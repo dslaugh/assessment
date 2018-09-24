@@ -1,4 +1,4 @@
-import processTransactions from './processTransactions';
+import normalizeTransactions from './normalizeTransactions';
 
 const raw_data = [
 	{ amount: 112.98, date: '27-01-2018T12:34', card_last_four: '2544' },
@@ -13,11 +13,11 @@ const raw_data = [
 	{ amount: 1111.11, date: '15-01-2018T21:34', card_last_four: '9912' }
 ];
 
-const processed_transactions = processTransactions(raw_data);
+const normalized_transactions = normalizeTransactions(raw_data);
 
-describe('processTransactions()', () => {
+describe('normalizeTransactions()', () => {
 	it('should add a "formatted_date" and a "formatted_amount" to each transaction', () => {
-		const all_have_added_properties = processed_transactions.every((transaction) => {
+		const all_have_added_properties = normalized_transactions.every((transaction) => {
 			return transaction.formatted_date && transaction.formatted_amount;
 		});
 
@@ -25,21 +25,21 @@ describe('processTransactions()', () => {
 	});
 
 	it('formatted_date should have the format yyyy-mm-ddThh:ss', () => {
-		expect(processed_transactions[0].formatted_date).toBe('2017-06-22T10:33');
+		expect(normalized_transactions[0].formatted_date).toBe('2017-06-22T10:33');
 	});
 
 	it('should left pad hours with a zero if below 10', () => {
-		expect(processed_transactions[3].formatted_date).toBe('2017-12-01T09:36');
+		expect(normalized_transactions[3].formatted_date).toBe('2017-12-01T09:36');
 	});
 
 	it('formatted_amount should retain decimal places', () => {
-		expect(processed_transactions[3].formatted_amount).toBe('0.45');
-		expect(processed_transactions[6].formatted_amount).toBe('2850.70');
-		expect(processed_transactions[8].formatted_amount).toBe('45.00');
+		expect(normalized_transactions[3].formatted_amount).toBe('0.45');
+		expect(normalized_transactions[6].formatted_amount).toBe('2850.70');
+		expect(normalized_transactions[8].formatted_amount).toBe('45.00');
 	});
 
 	it('should order transactions by date', () => {
-		const is_earliest_to_latest = processed_transactions.reduce((prev, next) => {
+		const is_earliest_to_latest = normalized_transactions.reduce((prev, next) => {
 			if (prev.formatted_date === false) {
 				return false;
 			}
