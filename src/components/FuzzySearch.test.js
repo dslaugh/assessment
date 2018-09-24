@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from 'react-test-renderer';
-import Assessment from './Assessment';
+import FuzzySearch from './FuzzySearch';
 
 const processed_transactions = [
 	{ amount: 1345.98, date: '22-06-2017T10:33', card_last_four: '0059', formatted_date: '2017-06-22T10:33', formatted_amount: '1345.98' },
@@ -22,12 +22,12 @@ const props = {
 describe('Assessment', () => {
 	let assessment;
 	beforeEach(() => {
-		assessment = new Assessment(props);
+		assessment = new FuzzySearch(props);
 	});
 
 	it('should render correctly', () => {
 		const component = renderer.create(
-			<Assessment transactions={ processed_transactions } />
+			<FuzzySearch transactions={ processed_transactions } />
 		);
 		let tree = component.toJSON();
 

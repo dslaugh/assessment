@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Assessment from './components/Assessment';
+import FuzzySearch from './components/FuzzySearch';
 import processTransactions from './helpers/processTransactions';
 import './css/index.css';
 
@@ -20,6 +20,6 @@ const raw_data = [
 const transactions = processTransactions(raw_data);
 
 ReactDOM.render(
-	<Assessment transactions={ transactions } />,
+	<FuzzySearch transactions={ transactions } />,
 	document.getElementById('root')
 );

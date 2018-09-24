@@ -2,7 +2,7 @@ import React from "react";
 import SearchInput from './SearchInput';
 import Transactions from './Transactions';
 
-export default class Assessment extends React.Component {
+export default class FuzzySearch extends React.Component {
 	constructor(props) {
 		super(props);
 
